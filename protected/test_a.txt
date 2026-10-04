@@ -1,0 +1,6 @@
+FIM Test File A
+
+This is a sample text file used by the File Integrity Monitor.
+Its purpose is to provide a known baseline for SHA-256 hashing.
+
+If this file is modified, the resulting fingerprint should change.

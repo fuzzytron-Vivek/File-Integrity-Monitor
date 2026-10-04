@@ -1,0 +1,5 @@
+FIM Test File B
+
+The integrity monitor should detect changes to this file.
+Adding, removing, or modifying even a single character should
+produce a different SHA-256 fingerprint.

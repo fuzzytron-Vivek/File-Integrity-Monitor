@@ -1,0 +1,7 @@
+FIM Test File C
+
+This file exists inside a nested directory to test recursive
+filesystem traversal.
+
+The FIM should discover this file and calculate its fingerprint
+along with the other files in the protected directory.
