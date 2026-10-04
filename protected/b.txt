@@ -1,0 +1,8 @@
+This is b.txt 
+
+This test file was used to implement searching using non-hardcoded file paths 
+
+
+The crux is that we have the entry variable and we use that in order to pass the memory path of a file automatically
+
+
