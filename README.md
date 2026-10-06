@@ -44,5 +44,5 @@ Study notes from building v1 are in [`notes/`](notes/):
 
 ## Roadmap
 
-- [ ] Store a baseline of hashes
+- [x] Store a baseline of hashes
 - [ ] Compare against the baseline and report added, modified and deleted files
