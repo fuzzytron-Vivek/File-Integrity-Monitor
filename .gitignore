@@ -2,4 +2,4 @@
 /build/
 /tests/
 CmakeLists.txt 
-
+.clang-format
