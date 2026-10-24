@@ -5,3 +5,7 @@ filesystem traversal.
 
 The FIM should discover this file and calculate its fingerprint
 along with the other files in the protected directory.
+
+First change made after inclusion of file  comparison and manifest generation as manifest.json
+
+Tampering 

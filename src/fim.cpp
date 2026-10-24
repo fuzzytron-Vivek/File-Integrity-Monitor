@@ -59,8 +59,8 @@ bool generate_manifest(const std::filesystem::path &manifest_path,
                        const nlohmann::json &manifest) {
 
   if (std::filesystem::exists(manifest_path)) {
-    std::cout << "[FIM]: <Info> The manifest already exists , terminating "
-                 "manifest generation!"
+    std::cout << "[FIM]: <Info> The manifest already exists....skipping "
+                 "manifest generation "
               << std::endl;
     return false;
   }
@@ -81,4 +81,41 @@ bool generate_manifest(const std::filesystem::path &manifest_path,
 
   std::cout << "[FIM]: <Info> Manifest generated successfully!" << std::endl;
   return true;
+}
+
+bool check_file(const std::filesystem::path &manifest_path,
+                const std::filesystem::path &target_path) {
+
+  nlohmann::json manifest_;
+  if (!std::filesystem::exists(manifest_path)) {
+    std::cerr << "[FIM]:<Error> Manifest does not exist on specified path! "
+              << std::endl;
+    return false;
+  }
+  std::ifstream file(manifest_path);
+  if (!file) {
+    std::cerr << "[FIM]: <Error> Unable to open the manifest file ! "
+              << std::endl;
+    return false;
+  }
+
+  file >> manifest_;
+
+  if (!std::filesystem::exists(target_path)) {
+    std::cerr << "[FIM]:<Error> Target file does not exist on specified path! "
+              << std::endl;
+    return false;
+  }
+
+  if (!manifest_["files"].contains(target_path.string())) {
+    std::cerr << "[FIM]:<Error> Target file is not included in the "
+                 "manifest!"
+              << std::endl;
+    return false;
+  }
+
+  auto hash = hash_file(target_path);
+  auto hex = byte_to_hex_converter(hash);
+
+  return manifest_["files"][target_path.string()] == hex;
 }
