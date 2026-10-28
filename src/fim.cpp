@@ -92,15 +92,18 @@ bool check_file(const std::filesystem::path &manifest_path,
               << std::endl;
     return false;
   }
+  // loading current manifest
   std::ifstream file(manifest_path);
+
   if (!file) {
     std::cerr << "[FIM]: <Error> Unable to open the manifest file ! "
               << std::endl;
     return false;
   }
-
+  // chambering the manifest into the barrel
   file >> manifest_;
 
+  // shoot
   if (!std::filesystem::exists(target_path)) {
     std::cerr << "[FIM]:<Error> Target file does not exist on specified path! "
               << std::endl;
